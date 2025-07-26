@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Operacja 21-ALFA</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2em;
+    }
+    input {
+      padding: 0.5em;
+      font-size: 1.2em;
+      margin-top: 1em;
+    }
+    button {
+      margin-top: 1em;
+      padding: 0.5em 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>★ KONTROLA DOSTĘPU ★</h1>
+  <p>Podaj hasło od łączników:</p>
+  <input type="text" id="codeInput" />
+  <button onclick="checkCode()">Sprawdź</button>
+
+  <div id="result" style="margin-top: 2em;"></div>
+
+  <script>
+    function checkCode() {
+      const correct = "JEBAĆŻYDÓW"; // ← wpisz końcowe hasło
+      const input = document.getElementById("codeInput").value.trim().toUpperCase();
+      const resultDiv = document.getElementById("result");
+
+      if (input === correct) {
+        resultDiv.innerHTML = `
+          <p><strong>Hasło poprawne.</strong> Odtwarzam wiadomość z bazy... Podgłośnij nadajnik</p>
+          <audio controls autoplay>
+            <source src="uro.mp3" type="audio/mpeg">
+            Twój przeglądarka nie obsługuje dźwięku.
+          </audio>
+        `;
+      } else {
+        resultDiv.innerHTML = `<p>❌ Niepoprawny kod. Spróbuj ponownie.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
